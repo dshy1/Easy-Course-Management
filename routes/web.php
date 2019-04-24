@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', ['as' => 'site.home', 'uses' => 'portalController@HomeSite']);
 
 Route::get('/portal', ['as' => 'portal.dashboard', 'uses' => 'portalController@portalIndex']);
 Route::get('/portal/cursos/add', ['as' => 'curso.add', 'uses' => 'portalController@CadastrarCurso']);

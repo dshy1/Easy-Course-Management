@@ -40,7 +40,7 @@
                             </a>
                             <div class="d-flex order-lg-2 ml-auto">
                                 <div class="nav-item d-none d-md-flex">
-                                    <a href="https://github.com/tabler/tabler" class="btn btn-sm btn-outline-primary" target="_blank">Visitar site</a>
+                                    <a href="{{Route('site.home')}}" class="btn btn-sm btn-outline-primary">Visitar site</a>
                                 </div>
                                 <div class="dropdown d-none d-md-flex">
                                     <a class="nav-link icon" data-toggle="dropdown"> <i class="fe fe-bell"></i> <span class="nav-unread"></span> </a>

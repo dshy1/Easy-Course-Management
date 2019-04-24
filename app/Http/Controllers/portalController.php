@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class portalController extends Controller
 {
+    public function HomeSite(){
+        return view('home');
+    }
+
     public function portalIndex(){
         return view('portal.dashboard');
     }
