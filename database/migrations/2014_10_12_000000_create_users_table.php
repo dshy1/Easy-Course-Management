@@ -20,6 +20,12 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+
+            $table->string('nome', 50);
+            $table->date('data_nasc');
+            $table->string('CPF', 20);
+            $table->integer('permissao')->default(1);
+
             $table->timestamps();
         });
     }

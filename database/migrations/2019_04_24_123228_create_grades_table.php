@@ -15,6 +15,12 @@ class CreateGradesTable extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->bigIncrements('id');
+        /* indexar o foreign dos alunos e turma  */
+            $table->decimal('media', 4,2)->nullable();
+            $table->decimal('frequencia', 5,2)->nullable();
+            $table->decimal('nota_curso', 4,2)->nullable();
+            $table->longtext('obs_rate')->nullable();
+            $table->integer('status_aluno')->default(1);
             $table->timestamps();
         });
     }

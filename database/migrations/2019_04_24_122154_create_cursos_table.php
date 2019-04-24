@@ -15,6 +15,14 @@ class CreateCursosTable extends Migration
     {
         Schema::create('cursos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nome', 45);
+            $table->decimal('duracao', 4,2);
+            $table->longText('descricao')->nullable();
+            $table->decimal('todos_inscritos', 5,0)->nullable();
+            $table->decimal('alunos_concluiram', 5,0)->nullable();
+            $table->decimal('alunos_desistiram', 5,0)->nullable();
+            $table->decimal('media_turmas', 4,2)->nullable();
+            $table->decimal('nota_curso', 4,2)->nullable();
             $table->timestamps();
         });
     }
