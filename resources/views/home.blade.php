@@ -1,18 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Blog Template for Bootstrap</title>
+        <title>Treinamentos Home Page</title>
         <!-- Bootstrap core CSS -->
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-        <link href="assets/css/dashboard.css" rel="stylesheet">
+        <link href="{{asset('bootstrap/css/bootstrap.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/css/dashboard.css')}}" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-        <link href="blog.css" rel="stylesheet">
+        <link href="{{asset('assets/blog.css')}}" rel="stylesheet">
     </head>
     <body>
         <div class="container">
@@ -97,13 +97,13 @@
     </div>
     <!-- /.container -->
     <footer class="blog-footer">
-        <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://github.com/dshy1">@dshy</a>.</p>
         <p> <a href="#">Back to top</a> </p>
     </footer>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/popper.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/js/popper.js')}}"></script>
+    <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
 </body>
