@@ -13,8 +13,12 @@
 
 Route::get('/', ['as' => 'site.home', 'uses' => 'portalController@HomeSite']);
 
-Route::get('/portal', ['as' => 'portal.dashboard', 'uses' => 'portalController@portalIndex']);
-Route::get('/portal/cursos/add', ['as' => 'curso.add', 'uses' => 'portalController@CadastrarCurso']);
+Route::get('/portal', ['as' => 'portal.dashboard', 'uses' => 'portalController@portalIndex'])->middleware('auth');
+Route::get('/portal/cursos/add', ['as' => 'curso.add', 'uses' => 'portalController@CadastrarCurso'])->middleware('auth');
 
 
-Route::get('/portal/alunos/add', ['as' => 'aluno.add', 'uses' => 'portalController@CadastrarAluno']);
+Route::get('/portal/alunos/add', ['as' => 'aluno.add', 'uses' => 'portalController@CadastrarAluno'])->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

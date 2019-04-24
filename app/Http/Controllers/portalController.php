@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class portalController extends Controller
 {
     public function HomeSite(){
-        return view('home');
+        return view('site_home');
     }
 
     public function portalIndex(){
@@ -17,7 +17,6 @@ class portalController extends Controller
     public function CadastrarCurso(){
         return view('portal.cursos.add');
     }
-
 
     public function CadastrarAluno(){
         return view('portal.alunos.add');
