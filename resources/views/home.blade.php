@@ -22,7 +22,7 @@
                         <a class="blog-header-logo text-dark" href="#">Treinamento</a>
                     </div>
                     <div class="col-4 d-flex justify-content-end align-items-center">
-                        <a class="btn btn-sm bg-success btn-outline-light btn-light shadow-sm text-light" href="#">Área do aluno</a>
+                        <a class="btn btn-sm bg-success btn-outline-light btn-light shadow-sm text-light" href="{{Route('portal.dashboard')}}">Área do aluno</a>
                     </div>
                 </div>
             </header>

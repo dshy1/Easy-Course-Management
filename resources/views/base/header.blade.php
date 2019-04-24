@@ -93,20 +93,20 @@
                             <div class="col-lg order-lg-first">
                                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                                     <li class="nav-item">
-                                        <a href="../index.html" class="nav-link active"><i class="fe fe-home"></i> Home</a>
+                                        <a href="{{Route('portal.dashboard')}}" class="nav-link active"><i class="fe fe-home"></i> Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i> Cursos</a>
+                                        <a href="{{Route('curso.add')}}" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i> Cursos</a>
                                         <div class="dropdown-menu dropdown-menu-arrow">
-                                            <a href="../cards.html" class="dropdown-item">Cards design</a>
+                                            <a href="{{Route('curso.add')}}" class="dropdown-item">Adicionar Curso</a>
                                             <a href="../charts.html" class="dropdown-item">Charts</a>
                                             <a href="../pricing-cards.html" class="dropdown-item">Pricing cards</a>
                                         </div>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i> Alunos</a>
+                                        <a href="{{Route('aluno.add')}}" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i> Alunos</a>
                                         <div class="dropdown-menu dropdown-menu-arrow">
-                                            <a href="../maps.html" class="dropdown-item">Maps</a>
+                                            <a href="{{Route('aluno.add')}}" class="dropdown-item">Novo Aluno</a>
                                             <a href="../icons.html" class="dropdown-item">Icons</a>
                                             <a href="../store.html" class="dropdown-item">Store</a>
                                             <a href="../blog.html" class="dropdown-item">Blog</a>

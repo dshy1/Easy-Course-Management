@@ -19,4 +19,4 @@ Route::get('/portal', ['as' => 'portal.dashboard', 'uses' => 'portalController@p
 Route::get('/portal/cursos/add', ['as' => 'curso.add', 'uses' => 'portalController@CadastrarCurso']);
 
 
-Route::get('/portal/alunos/add', ['as' => 'alunos.add', 'uses' => 'portalController@CadastrarAluno']);
+Route::get('/portal/alunos/add', ['as' => 'aluno.add', 'uses' => 'portalController@CadastrarAluno']);
