@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('/portal', ['as' => 'portal.dashboard', 'uses' => 'portalController@portalIndex']);
+Route::get('/portal/cursos/add', ['as' => 'curso.add', 'uses' => 'portalController@AdicionarCurso']);
