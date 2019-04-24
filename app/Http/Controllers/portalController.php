@@ -10,7 +10,12 @@ class portalController extends Controller
         return view('portal.dashboard');
     }
 
-    public function AdicionarCurso(){
+    public function CadastrarCurso(){
         return view('portal.cursos.add');
+    }
+
+
+    public function CadastrarAluno(){
+        return view('portal.alunos.add');
     }
 }

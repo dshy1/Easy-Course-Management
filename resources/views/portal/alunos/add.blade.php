@@ -1,7 +1,7 @@
 @extends('base.header')
 
 @section('title', 'Cadastrar Aluno')
-
+<script src="{{asset('assets/plugins/cidades-estados.js')}}"></script>
 @section('content')
 
 <div class="container">
@@ -78,13 +78,13 @@
         <div class="col-sm-6 col-md-6 col-lg-4">
             <div class="form-group">
                 <label class="form-label">Telefone</label>
-                <input type="text" class="form-control" placeholder="Nome do vendedor" value="" name="telefone1">
+                <input type="text" class="form-control" placeholder="(00) 00000-0000" value="" name="telefone1">
             </div>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-3">
             <div class="form-group">
                 <label class="form-label">Telefone</label>
-                <input type="text" class="form-control" placeholder="Telefone" value="" name="telefone2">
+                <input type="text" class="form-control" placeholder="(00) 00000-0000" value="" name="telefone2">
             </div>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-5">
