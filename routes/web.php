@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('portal.dashboard');
+    return view('home');
 });
+
+Route::get('/portal', ['as' => 'portal.dashboard', 'uses' => 'portalController@portalIndex']);
