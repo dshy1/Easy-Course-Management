@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 
 class portalController extends Controller
@@ -14,14 +15,14 @@ class portalController extends Controller
     public function portalIndex(){
         $level = Auth::user()->permissao;
 
-        if($level = 3){
-            return view('portal.dashboard');
+        if($level == 3){
+            return view('portal.admin.admin-dashboard');
         }
-        elseif($level = 2){
-            return view('portal.dashboard');
+        elseif($level == 2){
+            return view('portal.professor.professor-dashboard');
         }
-        elseif($level = 1){
-            return view('portal.dashboard');
+        elseif($level == 1){
+            return view('portal.aluno.aluno-dashboard');
         }
         else {
             return 'OBS. Algo de errado não está certo!';
@@ -33,7 +34,14 @@ class portalController extends Controller
     }
 
     public function CadastrarCurso(){
-        return view('portal.cursos.add');
+        if(Auth::user()->permissao == 3){
+            return view('portal.admin.cursos.add');
+        }
+        else {
+            $alerta = '<b>' . Auth::user()->name . '</b> Essa área é restrita, apenas para professores.';
+            return redirect()->back()->with('alerta', $alerta);   
+        }
+        
     }
 
     public function CadastrarAluno(){
