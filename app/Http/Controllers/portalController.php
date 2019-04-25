@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class portalController extends Controller
 {
@@ -11,7 +12,24 @@ class portalController extends Controller
     }
 
     public function portalIndex(){
-        return view('portal.dashboard');
+        $level = Auth::user()->permissao;
+
+        if($level = 3){
+            return view('portal.dashboard');
+        }
+        elseif($level = 2){
+            return view('portal.dashboard');
+        }
+        elseif($level = 1){
+            return view('portal.dashboard');
+        }
+        else {
+            return 'OBS. Algo de errado não está certo!';
+        }
+
+
+
+        
     }
 
     public function CadastrarCurso(){
