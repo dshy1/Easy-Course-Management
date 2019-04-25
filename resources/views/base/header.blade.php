@@ -145,6 +145,14 @@
                         </div>
                     </div>
                 </div>
+
+                @if (\Session::has('alerta'))
+                <div class="alert alert-danger">
+                  <div class="container">
+                        <p> {!! \Session::get('alerta') !!}</p>
+                  </div>
+                </div>
+                @endif
                 <div class="my-3 my-md-5">
 
           @yield('content')
