@@ -79,7 +79,7 @@
                                         <a class="dropdown-item" href="#"> <i class="dropdown-icon fe fe-send"></i> Message </a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="#"> <i class="dropdown-icon fe fe-help-circle"></i> Need help? </a>
-                                        <a class="dropdown-item" href="#"> <i class="dropdown-icon fe fe-log-out"></i> Sign out </a>
+                                        <a class="dropdown-item" href="{{Route('logout')}}"> <i class="dropdown-icon fe fe-log-out"></i> Sair </a>
                                     </div>
                                 </div>
                             </div>
@@ -104,6 +104,8 @@
                                         </div>
                                     </li>
                                     <li class="nav-item dropdown">
+                                    
+                                        @if (Auth::user()->permissao == 3)
                                         <a href="{{Route('aluno.add')}}" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i> Alunos</a>
                                         <div class="dropdown-menu dropdown-menu-arrow">
                                             <a href="{{Route('aluno.add')}}" class="dropdown-item">Novo Aluno</a>
@@ -112,6 +114,19 @@
                                             <a href="../blog.html" class="dropdown-item">Blog</a>
                                             <a href="../carousel.html" class="dropdown-item">Carousel</a>
                                         </div>
+                                        @elif (Auth::user()->permissao == 2)
+                                        <a href="#" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i> Turmas </a>
+                                        <div class="dropdown-menu dropdown-menu-arrow">
+                                            <a href="#" class="dropdown-item">Lista de turmas</a>
+                                        </div>
+                                        @else (Auth::user()->permissao == 1)
+                                        <a href="#" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i> Meus cursos </a>
+                                        <div class="dropdown-menu dropdown-menu-arrow">
+                                            <a href="#" class="dropdown-item">Lista de cursos</a>
+                                        </div>
+                                        @endif
+                                            
+                                        
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-file"></i> Certificados</a>
@@ -140,7 +155,7 @@
                                     <li class="nav-item">
                                         <a href="../docs/index.html" class="nav-link"><i class="fe fe-file-text"></i> Documentation</a>
                                     </li>
-                                </ul>
+                                 </ul>
                             </div>
                         </div>
                     </div>
