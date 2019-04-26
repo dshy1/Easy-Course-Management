@@ -105,7 +105,18 @@
                                     </li>
                                     <li class="nav-item dropdown">
                                     
-                                        @if (Auth::user()->permissao == 3)
+                                        @if (Auth::user()->permissao == 1)
+                                        <a href="#" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i> Meus cursos </a>
+                                        <div class="dropdown-menu dropdown-menu-arrow">
+                                            <a href="#" class="dropdown-item">Lista de cursos</a>
+                                        </div>
+                                        @elseif (Auth::user()->permissao == 2)
+                                        <a href="#" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i> Turmas </a>
+                                        <div class="dropdown-menu dropdown-menu-arrow">
+                                            <a href="#" class="dropdown-item">Lista de turmas</a>
+                                        </div>
+                                        @else (Auth::user()->permissao == 3)
+
                                         <a href="{{Route('aluno.add')}}" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i> Alunos</a>
                                         <div class="dropdown-menu dropdown-menu-arrow">
                                             <a href="{{Route('aluno.add')}}" class="dropdown-item">Novo Aluno</a>
@@ -113,16 +124,6 @@
                                             <a href="../store.html" class="dropdown-item">Store</a>
                                             <a href="../blog.html" class="dropdown-item">Blog</a>
                                             <a href="../carousel.html" class="dropdown-item">Carousel</a>
-                                        </div>
-                                        @elif (Auth::user()->permissao == 2)
-                                        <a href="#" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i> Turmas </a>
-                                        <div class="dropdown-menu dropdown-menu-arrow">
-                                            <a href="#" class="dropdown-item">Lista de turmas</a>
-                                        </div>
-                                        @else (Auth::user()->permissao == 1)
-                                        <a href="#" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i> Meus cursos </a>
-                                        <div class="dropdown-menu dropdown-menu-arrow">
-                                            <a href="#" class="dropdown-item">Lista de cursos</a>
                                         </div>
                                         @endif
                                             
