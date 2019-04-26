@@ -38,15 +38,13 @@ class portalController extends Controller
             return view('portal.admin.cursos.add');
         }
         else {
-            $alerta = '<b>' . Auth::user()->name . '</b> Essa área é restrita, apenas para professores.';
+            $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins.';
             return redirect()->back()->with('alerta', $alerta);   
         }
         
     }
 
     public function CadastrarAluno(){
-        return view('portal.alunos.add');
+        return view('portal.admin.alunos.add');
     }
 }
-
-/* TESTE ERRO */
