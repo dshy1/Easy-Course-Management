@@ -57,12 +57,11 @@
                     <table class="table card-table table-vcenter text-nowrap">
                         <thead>
                             <tr>
-                                <th>cursos</th>
-                                <th>area</th>
-                                <th>inscritos</th>
-                                <th>nível</th>
-                                <th>Status</th>
-                                <th>Professor</th>
+                                <th>Turma</th>
+                                <th>Curso</th>
+                                <th>Alunos</th>
+                                <th>Média</th>
+                                <th>Avaliação do curso</th>
                                 <th></th>
                                 <th></th>
                             </tr>

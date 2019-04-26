@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="dropdown">
                                     <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown"> 
-                                      <span class="avatar" style="background-image: url(../demo/faces/female/25.jpg)"></span> 
+                                    <span class="avatar avatar-blue"><?php echo substr(Auth::user()->name, 0,2); ?></span>
                                       <span class="ml-2 d-none d-lg-block"> <span class="text-default">{{Auth::user()->name}}</span> 
                                       <small class="text-muted d-block mt-1">
                                       @if(Auth::user()->permissao == 1)
@@ -180,9 +180,10 @@
                 </div>
 
                 @if (\Session::has('alerta'))
-                <div class="alert alert-danger">
-                  <div class="container" style="margin-top:12px">
-                        <p> {!! \Session::get('alerta') !!}</p>
+                <div class="alert alert-danger alert-dismissible">
+                  <div class="container">
+                    <button type="button" class="close" data-dismiss="alert"></button>
+                    {!! \Session::get('alerta') !!}
                   </div>
                 </div>
                 @endif

@@ -15,6 +15,7 @@ Route::get('/', ['as' => 'site.home', 'uses' => 'portalController@HomeSite']);
 
 Route::get('/portal', ['as' => 'portal.dashboard', 'uses' => 'portalController@portalIndex'])->middleware('auth');
 Route::get('/portal/cursos/add', ['as' => 'curso.add', 'uses' => 'portalController@CadastrarCurso'])->middleware('auth');
+Route::post('/portal/cursos/add/save', ['as' => 'curso.salvar', 'uses' => 'portalController@SalvarCadastrarCurso'])->middleware('auth');
 
 
 Route::get('/portal/alunos/add', ['as' => 'aluno.add', 'uses' => 'portalController@CadastrarAluno'])->middleware('auth');
