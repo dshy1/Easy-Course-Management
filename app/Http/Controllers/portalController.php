@@ -48,3 +48,5 @@ class portalController extends Controller
         return view('portal.alunos.add');
     }
 }
+
+/* TESTE ERRO */
