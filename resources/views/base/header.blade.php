@@ -104,6 +104,46 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- ALUNO MENUS -->
+                @if(Auth::user()->permissao == 1)
+                <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg order-lg-first">
+                                <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+                                    <li class="nav-item">
+                                        <a href="{{Route('portal.dashboard')}}" class="nav-link active"><i class="fe fe-home"></i>Dashboard</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i>Cursos</a>
+                                        <div class="dropdown-menu dropdown-menu-arrow">
+                                            <a href="#" class="dropdown-item">Meus Cursos</a>
+                                            <a href="../charts.html" class="dropdown-item">Novo Curso</a>
+                                            <a href="#" class="dropdown-item">Meus Certificados</a>
+                                            <a href="../pricing-cards.html" class="dropdown-item">Sugerir um Curso</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a href="#" class="nav-link"><i class="fe fe-calendar"></i>Notas e frequência</a>                                     
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-file"></i>Suporte</a>
+                                        <div class="dropdown-menu dropdown-menu-arrow">
+                                            <a href="#" class="dropdown-item">Abrir um chamado</a>
+                                            <a href="#" class="dropdown-item">Lançar justificativa</a>
+                                            <a href="#" class="dropdown-item">Dúvidas Frequentes</a>
+                                        </div>
+                                    </li>
+                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ALUNO MENU FIM -->
+
+                <!-- PROFESSOR MENU START -->
+                @elseif(Auth::user()->permissao == 2)
                 <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
                     <div class="container">
                         <div class="row align-items-center">
@@ -113,71 +153,66 @@
                                         <a href="{{Route('portal.dashboard')}}" class="nav-link active"><i class="fe fe-home"></i> Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{Route('curso.add')}}" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i> Cursos</a>
+                                        <a href="{{Route('curso.add')}}" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i>Minhas turmas</a>
                                         <div class="dropdown-menu dropdown-menu-arrow">
-                                            <a href="{{Route('curso.add')}}" class="dropdown-item">Adicionar Curso</a>
-                                            <a href="../charts.html" class="dropdown-item">Charts</a>
-                                            <a href="../pricing-cards.html" class="dropdown-item">Pricing cards</a>
+                                            <a href="#" class="dropdown-item">Ver turmas</a>
+                                            <a href="#" class="dropdown-item">Cadastrar aula</a>
                                         </div>
-                                    </li>
+                                      </li>
                                     <li class="nav-item dropdown">
-                                    
-                                        @if (Auth::user()->permissao == 1)
-                                        <a href="#" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i> Meus cursos </a>
-                                        <div class="dropdown-menu dropdown-menu-arrow">
-                                            <a href="#" class="dropdown-item">Lista de cursos</a>
-                                        </div>
-                                        @elseif (Auth::user()->permissao == 2)
-                                        <a href="#" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i> Turmas </a>
-                                        <div class="dropdown-menu dropdown-menu-arrow">
-                                            <a href="#" class="dropdown-item">Lista de turmas</a>
-                                        </div>
-                                        @else (Auth::user()->permissao == 3)
+                                      <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-file"></i>Suporte</a>
+                                      <div class="dropdown-menu dropdown-menu-arrow">
+                                          <a href="../profile.html" class="dropdown-item">Abrir um chamado</a>
+                                          <a href="../login.html" class="dropdown-item">Lançar justificativa</a>
+                                          <a href="../register.html" class="dropdown-item">Dúvidas Frequentes</a>
+                                      </div>
+                                  </li>
+                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PROFESSOR MENU END -->
 
-                                        <a href="{{Route('aluno.add')}}" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i> Alunos</a>
-                                        <div class="dropdown-menu dropdown-menu-arrow">
-                                            <a href="{{Route('aluno.add')}}" class="dropdown-item">Novo Aluno</a>
-                                            <a href="../icons.html" class="dropdown-item">Icons</a>
-                                            <a href="../store.html" class="dropdown-item">Store</a>
-                                            <a href="../blog.html" class="dropdown-item">Blog</a>
-                                            <a href="../carousel.html" class="dropdown-item">Carousel</a>
-                                        </div>
-                                        @endif
-                                            
-                                        
+                <!-- ADMIN MENU START -->
+                @elseif(Auth::user()->permissao == 3)
+                <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg order-lg-first">
+                                <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+                                    <li class="nav-item">
+                                        <a href="{{Route('portal.dashboard')}}" class="nav-link active"><i class="fe fe-home"></i> Home</a>
                                     </li>
-                                    <li class="nav-item dropdown">
-                                        <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-file"></i> Certificados</a>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i>Alunos</a>
                                         <div class="dropdown-menu dropdown-menu-arrow">
-                                            <a href="../profile.html" class="dropdown-item">Profile</a>
-                                            <a href="../login.html" class="dropdown-item">Login</a>
-                                            <a href="../register.html" class="dropdown-item">Register</a>
-                                            <a href="../forgot-password.html" class="dropdown-item">Forgot password</a>
-                                            <a href="../400.html" class="dropdown-item">400 error</a>
-                                            <a href="../401.html" class="dropdown-item">401 error</a>
-                                            <a href="../403.html" class="dropdown-item">403 error</a>
-                                            <a href="../404.html" class="dropdown-item">404 error</a>
-                                            <a href="../500.html" class="dropdown-item">500 error</a>
-                                            <a href="../503.html" class="dropdown-item">503 error</a>
-                                            <a href="../email.html" class="dropdown-item">Email</a>
-                                            <a href="../empty.html" class="dropdown-item">Empty page</a>
-                                            <a href="../rtl.html" class="dropdown-item">RTL mode</a>
+                                            <a href="{{Route('aluno.add')}}" class="dropdown-item">Cadastrar aluno</a>
+                                            <a href="#" class="dropdown-item">Listar alunos</a>
                                         </div>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a href="../form-elements.html" class="nav-link"><i class="fe fe-check-square"></i> Forms</a>
+                                        <a href="{{Route('aluno.add')}}" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i>Cursos</a>
+                                        <div class="dropdown-menu dropdown-menu-arrow">
+                                            <a href="{{Route('curso.add')}}" class="dropdown-item">Novo curso</a>
+                                            <a href="#" class="dropdown-item">Turmas</a>
+                                            <a href="#" class="dropdown-item">Professores</a>
+                                        </div>                                        
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a href="#" class="nav-link"><i class="fe fe-check-square"></i>Certificados</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="../gallery.html" class="nav-link"><i class="fe fe-image"></i> Gallery</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="../docs/index.html" class="nav-link"><i class="fe fe-file-text"></i> Documentation</a>
+                                        <a href="#" class="nav-link"><i class="fe fe-image"></i>Chamados</a>
                                     </li>
                                  </ul>
                             </div>
                         </div>
                     </div>
                 </div>
+                @endif
+
+                <!-- MENU ADMIN END -->
 
                 @if (\Session::has('alerta'))
                 <div class="alert alert-danger alert-dismissible">
