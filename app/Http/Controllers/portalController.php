@@ -39,7 +39,7 @@ class portalController extends Controller
         }
         else {
             $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins.';
-            return redirect()->back()->with('alerta', $alerta);   
+            return redirect()->route('portal.dashboard')->with('alerta', $alerta);   
         }
         
     }
