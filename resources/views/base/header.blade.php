@@ -18,7 +18,6 @@
     <title>Treinamentos - @yield('title', 'Dashboard')</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
-    <script src="{{asset('assets/js/require.min.js')}}"></script>
     <!-- Dashboard Core -->
     <link href="{{asset('assets/css/dashboard.css')}}" rel="stylesheet"/>
     <script src="{{asset('assets/js/dashboard.js')}}"></script>
@@ -27,6 +26,11 @@
     <script src="{{asset('assets/plugins/charts-c3/plugin.js')}}"></script>
     <!-- Input Mask Plugin -->
     <script src="{{asset('assets/plugins/input-mask/plugin.js')}}"></script>
+
+    <!-- For fix bugs and run dropdown -->
+    <script src="{{asset('assets/js/vendors/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{asset('assets/js/vendors/bootstrap.bundle.min.js')}}"></script>
+
   </head>
 
   <body class="">
