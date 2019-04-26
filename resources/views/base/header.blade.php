@@ -40,7 +40,7 @@
                     <div class="container">
                         <div class="d-flex">
                             <a class="header-brand" href="../index.html">
-                                <img src="../demo/brand/tabler.svg" class="header-brand-img" alt="Logo">
+                                <img src="{{asset('uploads/laravel-logo.png')}}" class="header-brand-img" alt="Logo">
                             </a>
                             <div class="d-flex order-lg-2 ml-auto">
                                 <div class="nav-item d-none d-md-flex">
@@ -181,7 +181,7 @@
 
                 @if (\Session::has('alerta'))
                 <div class="alert alert-danger">
-                  <div class="container">
+                  <div class="container" style="margin-top:12px">
                         <p> {!! \Session::get('alerta') !!}</p>
                   </div>
                 </div>
