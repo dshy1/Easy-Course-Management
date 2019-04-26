@@ -14,23 +14,23 @@ class portalController extends Controller
 
     public function portalIndex(){
         $level = Auth::user()->permissao;
-
-        if($level == 3){
-            return view('portal.admin.admin-dashboard');
+        
+        if($level == 1){
+            return view('portal.aluno.aluno-dashboard');
         }
+
         elseif($level == 2){
             return view('portal.professor.professor-dashboard');
         }
-        elseif($level == 1){
-            return view('portal.aluno.aluno-dashboard');
+
+        elseif($level == 3){
+            return view('portal.admin.admin-dashboard');
         }
+
         else {
             return 'OBS. Algo de errado não está certo!';
         }
 
-
-
-        
     }
 
     public function CadastrarCurso(){
