@@ -165,9 +165,9 @@
                                     <li class="nav-item dropdown">
                                       <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-file"></i>Suporte</a>
                                       <div class="dropdown-menu dropdown-menu-arrow">
-                                          <a href="../profile.html" class="dropdown-item">Abrir um chamado</a>
-                                          <a href="../login.html" class="dropdown-item">Lançar justificativa</a>
-                                          <a href="../register.html" class="dropdown-item">Dúvidas Frequentes</a>
+                                          <a href="#" class="dropdown-item">Abrir um chamado</a>
+                                          <a href="#" class="dropdown-item">Lançar justificativa</a>
+                                          <a href="#" class="dropdown-item">Dúvidas Frequentes</a>
                                       </div>
                                   </li>
                                  </ul>
@@ -191,7 +191,7 @@
                                         <a href="#" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i>Alunos</a>
                                         <div class="dropdown-menu dropdown-menu-arrow">
                                             <a href="{{Route('aluno.add')}}" class="dropdown-item">Cadastrar aluno</a>
-                                            <a href="#" class="dropdown-item">Listar alunos</a>
+                                            <a href="{{Route('aluno.lista')}}" class="dropdown-item">Listar alunos</a>
                                         </div>
                                     </li>
                                     <li class="nav-item dropdown">
@@ -225,6 +225,15 @@
                   </div>
                 </div>
                 @endif
+
+                @if (\Session::has('sucesso'))
+                <div class="alert alert-info alert-dismissible">
+                  <div class="container">
+                    <button type="button" class="close" data-dismiss="alert"></button>
+                    {!! \Session::get('sucesso') !!}
+                  </div>
+                </div>
+                @endif
                 <div class="my-3 my-md-5">
 
           @yield('content')
@@ -243,27 +252,27 @@
               <div class="col-6 col-md-3">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="#">First link</a>
+                    <a href="#">Equipe</a>
                   </li>
                   <li>
-                    <a href="#">Second link</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-6 col-md-3">
-                <ul class="list-unstyled mb-0">
-                  <li>
-                    <a href="#">Third link</a>
-                  </li>
-                  <li>
-                    <a href="#">Fourth link</a>
+                    <a href="#">Créditos de software</a>
                   </li>
                 </ul>
               </div>
               <div class="col-6 col-md-3">
                 <ul class="list-unstyled mb-0">
                   <li>
-                    <a href="#">Fifth link</a>
+                    <a href="#">Empresas que contribuiram</a>
+                  </li>
+                  <li>
+                    <a href="#">Usuários que contribuiram</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-6 col-md-3">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#">Ideia por trás do projeto</a>
                   </li>
                   <li>
                     <a href="#">Sixth link</a>
@@ -281,6 +290,7 @@
                 </ul>
                 </div>
               </div>
+              
             </div>
             <div class="col-lg-4 mt-4 mt-lg-0">
             </div>
@@ -295,20 +305,20 @@
                 <div class="col-auto">
                   <ul class="list-inline list-inline-dots mb-0">
                     <li class="list-inline-item">
-                      <a href="./docs/index.html">Documentation</a>
+                      <a href="#">Documentação</a>
                     </li>
                     <li class="list-inline-item">
-                      <a href="./faq.html">FAQ</a>
+                      <a href="#">FAQ</a>
                     </li>
                   </ul>
                 </div>
               <div class="col-auto">
-                <a href="https://github.com/tabler/tabler" class="btn btn-outline-primary btn-sm">Source code</a>
+                <a href="https://github.com/dshy1/Easy-Course-Management" class="btn btn-outline-primary btn-sm btn-github"><i class="fa fa-github mr-2"></i>GitProject</a>
               </div>
               </div>
             </div>
               <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
-              Copyright © 2018
+              Copyright © 2019
                 <a href=".">Tabler</a>. Theme by
                 <a href="https://codecalm.net" target="_blank">codecalm.net</a> All rights reserved.
               </div>

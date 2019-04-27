@@ -70,6 +70,13 @@ class portalController extends Controller
         }           
     }
 
+    public function ListaAlunos(){
+        if(Auth::user()->permissao == 3){
+            $users = User::where('permissao',1)->get();          
+            return view('portal.admin.alunos.lista')->with(array('users'=>$users));
+         }
+    }
+
     public function CadastrarAluno(){
         return view('portal.admin.alunos.add');
     }
@@ -78,7 +85,7 @@ class portalController extends Controller
         if(Auth::user()->permissao == 3){
             // VERIFICA SE AS SENHAS CONFEREM
             if($request->input('senha') != $request->input('senha2')){
-                $alerta = 'As senhas digitas não conferem!';
+                $alerta = 'As senhas não conferem!';
                 return redirect()->route('aluno.add')->with(['alerta' => $alerta]);   
             } 
             else {
@@ -104,6 +111,9 @@ class portalController extends Controller
             $crypt_pass = Hash::make($pass);
             $aluno->password = $crypt_pass;
             $aluno->save();
+
+            $sucesso = 'O aluno <b> ' . $aluno->name . '</b> foi cadastrado com sucesso!';
+            return redirect()->route('aluno.add')->with(['sucesso' => $sucesso, 'nome' => $aluno->nome]);   
 
             return redirect()->route('aluno.add');
             }  
