@@ -51,18 +51,18 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"></h3>
+                    <h3 class="card-title"> Alunos </h3>
                 </div>
                 <div class="table-responsive">
                     <table class="table card-table table-vcenter text-nowrap">
                         <thead>
                             <tr>
-                                <th>cursos</th>
-                                <th>area</th>
-                                <th>inscritos</th>
-                                <th>nível</th>
+                                <th>Aluno</th>
+                                <th>Data Nascimento</th>
+                                <th>Email</th>
+                                <th>Cursos inscritos</th>
                                 <th>Status</th>
-                                <th>Professor</th>
+                                <th>Média</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -72,17 +72,21 @@
                             @foreach($users as $user)
                                 <tr>
                                     
-                                <td><a href="invoice.html" class="text-inherit">{{$user->name}}</a></td>
-                                <td>{{$user->data_nasc}}</td>
-                                <td>12</td>
-                                <td>Todos</td>
-                                <td><span class="status-icon bg-warning"></span>&nbsp;Inicio em &lt;date&gt;</td>
-                                <td>Luiz</td>
+                                <td><a href="#" class="text-inherit">{{$user->name}}</a></td>
+                                <td><?php $datanasc = date("d-m-Y", strtotime($user->data_nasc)); echo $datanasc; ?></td>
+                                <td>{{$user->email}}</td>
+                                <td>5 Cursos</td>
+                                <td><span class="status-icon bg-warning"></span>Esperando turma</td>
+                                <td>8.75</td>
                                 <td class="text-right">
-                                    <a href="javascript:void(0)" class="btn btn-secondary btn-sm">Gerenciar</a>&nbsp;
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown">Actions</button>
-                                    </div>
+                                    <li class="nav-item dropdown">
+                                      <a href="javascript:void(0)" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fe fe-settings"> </i> Opções</a>
+                                      <div class="dropdown-menu dropdown-menu-arrow">
+                                          <a href="#" class="dropdown-item"><i class="fe fe-book"> </i> Registar em um curso</a>
+                                          <a href="#" class="dropdown-item"><i class="fe fe-unlock"> </i> Trocar senha</a>
+                                          <a href="#" class="dropdown-item"><i class="fe fe-trash-2"> </i> Deletar usuário</a>
+                                      </div>
+                                  </li>
                                 </td>
                                 <td>
                                     <a class="icon" href="javascript:void(0)"> <i class="fe fe-edit"></i> </a>
