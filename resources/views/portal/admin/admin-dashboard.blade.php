@@ -68,30 +68,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <a href="invoice.html" class="text-inherit">Corel Draw</a>
-                                </td>
-                                <td>Gráfica</td>
-                                <td>120</td>
-                                <td>Todos</td>
-                                <td><span class="status-icon bg-success"></span>Ativo</td>
-                                <td>Eduardo</td>
-                                <td class="text-right">
-                                    <a href="javascript:void(0)" class="btn btn-secondary btn-sm">Gerenciar</a>&nbsp;
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown">Actions</button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <a class="icon" href="javascript:void(0)"> <i class="fe fe-edit"></i> </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="invoice.html" class="text-inherit">Photoshop</a>
-                                </td>
-                                <td>Gráfica</td>
+
+                            @foreach($users as $user)
+                                <tr>
+                                    
+                                <td><a href="invoice.html" class="text-inherit">{{$user->name}}</a></td>
+                                <td>{{$user->data_nasc}}</td>
                                 <td>12</td>
                                 <td>Todos</td>
                                 <td><span class="status-icon bg-warning"></span>&nbsp;Inicio em &lt;date&gt;</td>
@@ -105,83 +87,10 @@
                                 <td>
                                     <a class="icon" href="javascript:void(0)"> <i class="fe fe-edit"></i> </a>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="invoice.html" class="text-inherit">After Effects</a>
-                                </td>
-                                <td>Audio visual</td>
-                                <td>30</td>
-                                <td>Todos</td>
-                                <td><span class="status-icon bg-warning"></span>&nbsp;Início em &lt;date&gt;</td>
-                                <td>Gabriel</td>
-                                <td class="text-right">
-                                    <a href="javascript:void(0)" class="btn btn-secondary btn-sm">Gerenciar</a>&nbsp;
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown">Actions</button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <a class="icon" href="javascript:void(0)"> <i class="fe fe-edit"></i> </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="invoice.html" class="text-inherit">Blender 3D</a>
-                                </td>
-                                <td>Audio Visual</td>
-                                <td>15</td>
-                                <td>Informática</td>
-                                <td><span class="status-icon bg-secondary"></span>Aguardando Inscrições</td>
-                                <td>Pedro</td>
-                                <td class="text-right">
-                                    <a href="javascript:void(0)" class="btn btn-secondary btn-sm">Gerenciar</a>
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown">Actions</button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <a class="icon" href="javascript:void(0)"> <i class="fe fe-edit"></i> </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="invoice.html" class="text-inherit">Segurança da informação</a>
-                                </td>
-                                <td>Programação</td>
-                                <td>63</td>
-                                <td>Todos</td>
-                                <td><span class="status-icon bg-danger"></span>Indisponível</td>
-                                <td>Paulo</td>
-                                <td class="text-right">
-                                    <a href="javascript:void(0)" class="btn btn-secondary btn-sm">Gerenciar</a>
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown">Actions</button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <a class="icon" href="javascript:void(0)"> <i class="fe fe-edit"></i> </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="invoice.html" class="text-inherit">Informática básica</a>
-                                </td>
-                                <td>Escritório</td>
-                                <td>654<br></td>
-                                <td>Todos</td>
-                                <td><span class="status-icon bg-secondary"></span>Aguardando Inscrições</td>
-                                <td>João</td>
-                                <td class="text-right">
-                                    <a href="javascript:void(0)" class="btn btn-secondary btn-sm">Gerenciar</a>
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown">Actions</button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <a class="icon" href="javascript:void(0)"> <i class="fe fe-edit"></i> </a>
-                                </td>
-                            </tr>
+                                    
+                                </tr>
+                            @endforeach
+                            
                         </tbody>
                     </table>
                 </div>

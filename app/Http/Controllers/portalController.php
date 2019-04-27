@@ -28,7 +28,12 @@ class portalController extends Controller
         }
 
         elseif($level == 3){
-            return view('portal.admin.admin-dashboard');
+            
+           //$users = DB::table('users')->where('votes', 100)->get();
+           // $users = User::all()->except(Auth::user()->id);
+
+           $users = User::where('permissao',1)->get();          
+           return view('portal.admin.admin-dashboard')->with(array('users'=>$users));
         }
 
         else {
@@ -69,13 +74,22 @@ class portalController extends Controller
     }
 
     public function SalvarCadastrarAluno(Request $request){
-        $aluno = new User();
-        $aluno->name = $request->input('nome');
-        $aluno->email = $request->input('email');
-        $aluno->data_nasc = $request->input('data_nasc');
-        $pass = $request->input('logradouro');
-        $crypt_pass = Hash::make($pass);
-        $aluno->password = $crypt_pass;
-        $aluno->save();
+        if(Auth::user()->permissao == 3){
+
+            $aluno = new User();
+            $aluno->name = $request->input('nome');
+            $aluno->email = $request->input('email');
+            $aluno->data_nasc = $request->input('data_nasc');
+            $pass = $request->input('logradouro');
+            $crypt_pass = Hash::make($pass);
+            $aluno->password = $crypt_pass;
+            $aluno->save();
+
+        return redirect()->route('aluno.add');
+        }
+        else {
+            $alerta = '<b>' . Auth::user()->name . '</b> Você não tem permissão para adicionar um curso.';
+            return redirect()->route('portal.dashboard')->with('alerta', $alerta);   
+        }  
     }
 }
