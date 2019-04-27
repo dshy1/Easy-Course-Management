@@ -14,16 +14,14 @@
 Route::get('/', ['as' => 'site.home', 'uses' => 'portalController@HomeSite']);
 
 Route::get('/portal', ['as' => 'portal.dashboard', 'uses' => 'portalController@portalIndex'])->middleware('auth');
-Route::get('/portal/cursos/add', ['as' => 'curso.add', 'uses' => 'portalController@CadastrarCurso'])->middleware('auth');
-Route::post('/portal/cursos/add/save', ['as' => 'curso.salvar', 'uses' => 'portalController@SalvarCadastrarCurso'])->middleware('auth');
+Route::get('/portal/cursos/adicionar', ['as' => 'curso.add', 'uses' => 'portalController@CadastrarCurso'])->middleware('auth');
+Route::post('/portal/cursos/salvar', ['as' => 'curso.salvar', 'uses' => 'portalController@SalvarCadastrarCurso'])->middleware('auth');
 
-
-Route::get('/portal/alunos/add', ['as' => 'aluno.add', 'uses' => 'portalController@CadastrarAluno'])->middleware('auth');
-Route::post('/portal/alunos/save', ['as' => 'aluno.salvar', 'uses' => 'portalController@SalvarCadastrarAluno'])->middleware('auth');
-
+Route::get('/portal/alunos', ['as' => 'aluno.lista', 'uses' => 'portalController@ListaAlunos'])->middleware('auth');
+Route::get('/portal/alunos/adicionar', ['as' => 'aluno.add', 'uses' => 'portalController@CadastrarAluno'])->middleware('auth');
+Route::post('/portal/alunos/salvar', ['as' => 'aluno.salvar', 'uses' => 'portalController@SalvarCadastrarAluno'])->middleware('auth');
 
 Route::get('/portal/logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
-
 
 Route::get('/portal/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/portal/login', 'Auth\LoginController@login');
@@ -31,15 +29,4 @@ Route::post('/portal/login', 'Auth\LoginController@login');
 
 /*
 Auth::routes();
-
-|        | GET|HEAD | login                  | login            | App\Http\Controllers\Auth\LoginController@showLoginForm                | web,guest    |
-|        | POST     | login                  |                  | App\Http\Controllers\Auth\LoginController@login                        | web,guest    |
-|        | POST     | logout                 | logout           | App\Http\Controllers\Auth\LoginController@logout                       | web          |
-|        | POST     | password/email         | password.email   | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web,guest    |
-|        | GET|HEAD | password/reset         | password.request | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web,guest    |
-|        | POST     | password/reset         | password.update  | App\Http\Controllers\Auth\ResetPasswordController@reset                | web,guest    |
-|        | GET|HEAD | password/reset/{token} | password.reset   | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web,guest    |
-|        | GET|HEAD | register               | register         | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web,guest    |
-|        | POST     | register               |                  | App\Http\Controllers\Auth\RegisterController@register                  | web,guest    |
-
 */
