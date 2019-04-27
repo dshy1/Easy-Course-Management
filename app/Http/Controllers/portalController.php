@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 use App\Curso;
+use App\User;
 
 class portalController extends Controller
 {
@@ -53,15 +55,27 @@ class portalController extends Controller
             $curso->duracao = $request->input('duracao');
             $curso->save();
 
+            return redirect()->route('curso.add');
         }
         else {
             $alerta = '<b>' . Auth::user()->name . '</b> Você não tem permissão para adicionar um curso.';
             return redirect()->route('portal.dashboard')->with('alerta', $alerta);   
-        }
+        }       
         
     }
 
     public function CadastrarAluno(){
         return view('portal.admin.alunos.add');
+    }
+
+    public function SalvarCadastrarAluno(Request $request){
+        $aluno = new User();
+        $aluno->name = $request->input('nome');
+        $aluno->email = $request->input('email');
+        $aluno->data_nasc = $request->input('data_nasc');
+        $pass = $request->input('logradouro');
+        $crypt_pass = Hash::make($pass);
+        $aluno->password = $crypt_pass;
+        $aluno->save();
     }
 }

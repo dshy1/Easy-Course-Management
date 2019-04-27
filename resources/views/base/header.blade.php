@@ -31,6 +31,9 @@
     <script src="{{asset('assets/js/vendors/jquery-3.2.1.min.js')}}"></script>
     <script src="{{asset('assets/js/vendors/bootstrap.bundle.min.js')}}"></script>
 
+    <script src="{{asset('assets/plugins/input-mask/jquery.mask.js')}}"></script>
+
+
   </head>
 
   <body class="">

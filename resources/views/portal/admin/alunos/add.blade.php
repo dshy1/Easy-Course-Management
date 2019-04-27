@@ -5,7 +5,8 @@
 @section('content')
 
 <div class="container">
-    <div class="card">
+<form class="card" action="{{Route('aluno.salvar')}}" method="POST">
+        @csrf
         <div class="card-body">
             <h3 class="card-title">Cadastrar novo aluno</h3>
             <div class="row">
@@ -101,6 +102,5 @@
                 <button type="submit" value="submit" class="btn btn-primary ml-auto">Registrar</button>
             </div>
         </div>
-    </div>       
-                    </div>
+    </form>       
 @stop
