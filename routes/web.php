@@ -21,8 +21,6 @@ Route::post('/portal/cursos/add/save', ['as' => 'curso.salvar', 'uses' => 'porta
 Route::get('/portal/alunos/add', ['as' => 'aluno.add', 'uses' => 'portalController@CadastrarAluno'])->middleware('auth');
 Route::post('/portal/alunos/save', ['as' => 'aluno.salvar', 'uses' => 'portalController@SalvarCadastrarAluno'])->middleware('auth');
 
-/* Route::get('/portal/alunos/novo', ['as' => 'aluno.registrar', 'uses' => 'Auth\RegisterController@showRegistrationForm'])->middleware('auth'); */
-
 
 Route::get('/portal/logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 

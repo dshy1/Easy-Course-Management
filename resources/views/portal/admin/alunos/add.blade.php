@@ -95,6 +95,18 @@
                     <input type="email" class="form-control" placeholder="emal@site.com" value="" name="email">
                 </div>
             </div>
+            <div class="col-sm-6 col-md-6 col-lg-5">
+                <div class="form-group">
+                    <label class="form-label">Senha</label>
+                    <input type="password" class="form-control" placeholder="senha" id="senha" value="" name="senha">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-5">
+                <div class="form-group">
+                    <label class="form-label">Repita sua Senha</label>
+                    <input type="password" class="form-control" placeholder="senha" id="senha2" value="" name="senha2">
+                </div>
+            </div>
         </div>
         <div class="card-footer text-right col-lg-12">
             <div class="d-flex">

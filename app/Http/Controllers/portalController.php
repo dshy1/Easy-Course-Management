@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Collection;
 
 use App\Curso;
 use App\User;
@@ -29,7 +30,7 @@ class portalController extends Controller
 
         elseif($level == 3){
             
-           //$users = DB::table('users')->where('votes', 100)->get();
+           // $users = DB::table('users')->where('votes', 100)->get();
            // $users = User::all()->except(Auth::user()->id);
 
            $users = User::where('permissao',1)->get();          
@@ -55,6 +56,7 @@ class portalController extends Controller
 
     public function SalvarCadastrarCurso(Request $request){
         if(Auth::user()->permissao == 3){
+
             $curso = new Curso();
             $curso->nome = $request->input('nome');
             $curso->duracao = $request->input('duracao');
@@ -65,8 +67,7 @@ class portalController extends Controller
         else {
             $alerta = '<b>' . Auth::user()->name . '</b> Você não tem permissão para adicionar um curso.';
             return redirect()->route('portal.dashboard')->with('alerta', $alerta);   
-        }       
-        
+        }           
     }
 
     public function CadastrarAluno(){
@@ -75,18 +76,39 @@ class portalController extends Controller
 
     public function SalvarCadastrarAluno(Request $request){
         if(Auth::user()->permissao == 3){
+            // VERIFICA SE AS SENHAS CONFEREM
+            if($request->input('senha') != $request->input('senha2')){
+                $alerta = 'As senhas digitas não conferem!';
+                return redirect()->route('aluno.add')->with(['alerta' => $alerta]);   
+            } 
+            else {
+                // VERIFICA SE O EMAIL JA EXISTE NO BANCO DE DADOS
+                $email = $request->input('email');
+                $banco = User::where('email', $email)->get('email');
+                
+                foreach($banco as $f_banco){
+                    if($f_banco->email == $email){
+                        $alerta = 'O email digitado já está cadastrado! - ' . $f_banco->email;
+                        return redirect()->route('aluno.add')->with(['alerta' => $alerta]);   
+                    }
+                    else{
 
+                    }
+                }
+            
             $aluno = new User();
             $aluno->name = $request->input('nome');
             $aluno->email = $request->input('email');
             $aluno->data_nasc = $request->input('data_nasc');
-            $pass = $request->input('logradouro');
+            $pass = $request->input('senha');
             $crypt_pass = Hash::make($pass);
             $aluno->password = $crypt_pass;
             $aluno->save();
 
-        return redirect()->route('aluno.add');
+            return redirect()->route('aluno.add');
+            }  
         }
+
         else {
             $alerta = '<b>' . Auth::user()->name . '</b> Você não tem permissão para adicionar um curso.';
             return redirect()->route('portal.dashboard')->with('alerta', $alerta);   
