@@ -20,8 +20,11 @@ Route::get('/portal', ['as' => 'portal.dashboard', 'uses' => 'portalController@p
 
 Route::get('/portal/cursos', ['as' => 'curso.lista', 'uses' => 'CursosController@ListaCursos'])->middleware('auth');
 Route::get('/portal/cursos/adicionar', ['as' => 'curso.add', 'uses' => 'CursosController@CadastrarCurso'])->middleware('auth');
-Route::post('/portal/cursos/salvar', ['as' => 'curso.salvar', 'uses' => 'CursosController@SalvarCadastrarCurso'])->middleware('auth');
-Route::get('/portal/cursos/salvar', ['as' => 'curso.salvar', 'uses' => 'CursosController@SalvarCadastrarCurso'])->middleware('auth');
+Route::post('/portal/cursos/adicionar/salvar', ['as' => 'curso.save', 'uses' => 'CursosController@SalvarCurso'])->middleware('auth');
+Route::get('/portal/cursos/{id}/editar', ['as' => 'curso.edit', 'uses' => 'CursosController@EditarCursoForm'])->middleware('auth');
+Route::post('/portal/cursos/{id}/editar/salvar', ['as' => 'curso.edit.save', 'uses' => 'CursosController@SalvarEditarCurso'])->middleware('auth');
+Route::get('/portal/cursos/{id}/deletar', ['as' => 'curso.delete', 'uses' => 'CursosController@DeletarCurso'])->middleware('auth');
+Route::get('/portal/cursos/pesquisar', ['as' => 'curso.buscar', 'uses' => 'CursosController@PesquisarCurso'])->middleware('auth');
 
 
 /* ROTA DO CADASTRO DE ALUNOS (ONLY ADMIN) */

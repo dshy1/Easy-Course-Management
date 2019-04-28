@@ -25,7 +25,7 @@ class CursosController extends Controller
         
     }
 
-    public function SalvarCadastrarCurso(Request $request){
+    public function SalvarCurso(Request $request){
         if(Auth::user()->permissao == 3){
             $dados = $request->all();
             $nome_curso = $request->nome;
@@ -52,6 +52,58 @@ class CursosController extends Controller
             return redirect()->route('portal.dashboard')->with('alerta', $alerta);   
         }
         
+    }
+
+    public function EditarCursoForm($id){
+        if(Auth::user()->permissao == 3){
+            $data = Curso::find($id);
+            return view('portal.admin.cursos.edit')->with(['dados' => $data]);
+        }
+        else {
+            $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins.';
+            return redirect()->route('portal.dashboard')->with('alerta', $alerta);   
+        }
+    }
+
+    public function SalvarEditarCurso(request $request, $id){
+        if(Auth::user()->permissao == 3){
+            $dados = $request->all();
+            $info_nome = Curso::find($id);
+            Curso::find($id)->update($dados);
+            $sucesso = 'O curso <b> ' . $info_nome->nome . '</b> foi editado com sucesso!';
+            return redirect()->route('curso.lista')->with(['sucesso' => $sucesso]);
+        }
+        else {
+            $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins!';
+            return redirect()->route('portal.dashboard')->with('alerta', $alerta);   
+        }
+    }
+
+    public function DeletarCurso($id){
+        if(Auth::user()->permissao == 3){
+            $info_nome = Curso::find($id);
+            Curso::find($id)->delete();
+
+            $sucesso = 'O curso <b> ' . $info_nome->nome . '</b> foi deletado com sucesso!';
+            return redirect()->route('curso.lista')->with(['sucesso' => $sucesso]);
+        }
+        else {
+            $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins!';
+            return redirect()->route('portal.dashboard')->with('alerta', $alerta);  
+        }
+    }
+
+
+    public function PesquisarCurso(request $request){
+        if(Auth::user()->permissao == 3){
+            $pesquisa = $request->q;
+            $cursos = Curso::where('nome', 'LIKE', '%'.$pesquisa.'%')->get();
+            return view('portal.admin.cursos.lista')->with(['cursos' => $cursos]);
+        }        
+        else {
+            $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins!';
+            return redirect()->route('portal.dashboard')->with('alerta', $alerta);  
+        }
     }
 
     

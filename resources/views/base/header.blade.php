@@ -195,9 +195,9 @@
                                         </div>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a href="{{Route('aluno.add')}}" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i>Cursos</a>
+                                        <a href="{{Route('aluno.lista')}}" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i>Cursos</a>
                                         <div class="dropdown-menu dropdown-menu-arrow">
-                                            <a href="{{Route('curso.add')}}" class="dropdown-item">Novo curso</a>
+                                            <a href="{{Route('curso.lista')}}" class="dropdown-item">Cursos</a>
                                             <a href="#" class="dropdown-item">Turmas</a>
                                             <a href="#" class="dropdown-item">Professores</a>
                                         </div>                                        
