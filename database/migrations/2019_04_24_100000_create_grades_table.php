@@ -14,7 +14,7 @@ class CreateGradesTable extends Migration
     public function up()
     {
         Schema::create('grades', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
         /* indexar o foreign dos alunos e turma  */
             $table->decimal('media', 4,2)->nullable();
             $table->decimal('frequencia', 5,2)->nullable();

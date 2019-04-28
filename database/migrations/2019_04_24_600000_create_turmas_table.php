@@ -13,8 +13,8 @@ class CreateTurmasTable extends Migration
      */
     public function up()
     {
-        Schema::create('turmas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('turmas', function (Blueprint $table) {           
+            $table->increments('id');
 
             /* FALTA O FOREIGNKEY DO CURSO AINDA */
 
@@ -23,6 +23,9 @@ class CreateTurmasTable extends Migration
             $table->decimal('media_turma', 4,2)->nullable();
             $table->decimal('nota_curso', 4,2)->nullable();
             $table->date('inicio_aulas')->nullable();
+
+            $table->integer('curso_id')->unsigned()->nullable();
+            $table->foreign('curso_id')->references('id')->on('cursos');
 
             $table->timestamps();
         });
