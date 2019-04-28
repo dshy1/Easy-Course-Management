@@ -82,11 +82,11 @@ class portalController extends Controller
          }
     }
 
-    public function CadastrarAluno(){
+    public function CadastrarAlunoForm(){
         return view('portal.admin.alunos.add');
     }
 
-    public function SalvarCadastrarAluno(Request $request){
+    public function CadastrarAlunoSalvar(Request $request){
         if(Auth::user()->permissao == 3){
             // VERIFICA SE AS SENHAS CONFEREM
             if($request->input('senha') != $request->input('senha2')){
@@ -139,6 +139,40 @@ class portalController extends Controller
         }  
     }
 
+    public function EditarAlunoForm(){
+        $edit = 'edit';
+        return view('portal.admin.alunos.add')->with('edit', $edit);
+    }
+
+    public function EditarAlunoSalvar(){
+        if(Auth::user()->permissao == 3){                
+            $aluno = new User();
+            $aluno->name = $request->input('nome');
+            $aluno->data_nasc = $request->input('data_nasc');
+            $aluno->CPF = $request->input('cpf');
+            $aluno->logradouro = $request->input('logradouro');
+            $aluno->numero = $request->input('numero');
+            $aluno->bairro = $request->input('bairro');
+            $aluno->pais = $request->input('pais');
+            $aluno->uf = $request->input('uf');
+            $aluno->telefone1 = $request->input('telefone1');
+            $aluno->telefone2 = $request->input('telefone2');
+
+            $aluno->save();
+
+            $sucesso = 'O aluno <b> ' . $aluno->name . '</b> foi editado com sucesso!';
+            return redirect()->route('aluno.add')->with(['sucesso' => $sucesso, 'nome' => $aluno->nome]);   
+
+            return redirect()->route('aluno.add');
+            }  
+        else {
+            $alerta = '<b>' . Auth::user()->name . '</b> Você não tem permissão para editar um aluno!';
+            return redirect()->route('portal.dashboard')->with('alerta', $alerta);   
+        }  
+    }
+    
+
+
     public function PesquisarAluno(Request $request){
     $pesquisa = $request->get('q');
 
@@ -151,8 +185,6 @@ class portalController extends Controller
         $alerta = '<b>' . Auth::user()->name . '</b> Você não tem acesso a essa área!';
         return redirect()->route('portal.dashboard')->with('alerta', $alerta);   
     }  
-
-    
     }
 
 
