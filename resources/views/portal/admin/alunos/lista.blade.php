@@ -48,7 +48,7 @@
                                     <div class="dropdown-menu dropdown-menu-arrow">
                                         <a href="#" class="dropdown-item"><i class="fe fe-book"> </i> Registar em um curso</a>
                                         <a href="#" class="dropdown-item"><i class="fe fe-unlock"> </i> Trocar senha</a>
-                                        <a href="#" class="dropdown-item"><i class="fe fe-trash-2"> </i> Deletar usuário</a>
+                                        <a href="{{Route('aluno.delete',$user->id)}}" class="dropdown-item"><i class="fe fe-trash-2"> </i> Deletar usuário</a>
                                     </div>
                                 </li>
                             </td>
