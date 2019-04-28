@@ -86,22 +86,35 @@ class portalController extends Controller
         return view('portal.admin.alunos.add');
     }
 
+
+
+
+    
+    /* 
+    
+    ABAIXO, FAZER PARA QUANDO DER ERRO, 
+    OS CAMPOS VOLTEM PREENCHIDOS
+    
+    */
+
     public function CadastrarAlunoSalvar(Request $request){
         if(Auth::user()->permissao == 3){
+            $users = $request->all();
             // VERIFICA SE AS SENHAS CONFEREM
             if($request->input('senha') != $request->input('senha2')){
                 $alerta = 'As senhas não conferem!';
-                return redirect()->route('aluno.add')->with(['alerta' => $alerta]);   
+                return redirect()->route('aluno.add')->with(['alerta' => $alerta, 'user' => $users]);   
             } 
             else {
                 // VERIFICA SE O EMAIL JA EXISTE NO BANCO DE DADOS
                 $email = $request->input('email');
                 $banco = User::where('email', $email)->get('email');
                 
+
                 foreach($banco as $f_banco){
                     if($f_banco->email == $email){
                         $alerta = 'O email digitado já está cadastrado! - ' . $f_banco->email;
-                        return redirect()->route('aluno.add')->with(['alerta' => $alerta]);   
+                        return redirect()->route('aluno.add')->with(['alerta' => $alerta, 'user' => $users]);   
                     }
                     else{
 
@@ -109,7 +122,7 @@ class portalController extends Controller
                 }
             
             $aluno = new User();
-            $aluno->name = $request->input('nome');
+            $aluno->name = $request->input('name');
             $aluno->email = $request->input('email');
             $aluno->data_nasc = $request->input('data_nasc');
             $aluno->CPF = $request->input('cpf');
@@ -129,7 +142,6 @@ class portalController extends Controller
             $sucesso = 'O aluno <b> ' . $aluno->name . '</b> foi cadastrado com sucesso!';
             return redirect()->route('aluno.add')->with(['sucesso' => $sucesso, 'nome' => $aluno->nome]);   
 
-            return redirect()->route('aluno.add');
             }  
         }
 
@@ -139,15 +151,16 @@ class portalController extends Controller
         }  
     }
 
-    public function EditarAlunoForm(){
+    public function EditarAlunoForm($id){
         $edit = 'edit';
-        return view('portal.admin.alunos.add')->with('edit', $edit);
+        $users = User::find($id);
+        return view('portal.admin.alunos.edit')->with(['edit' => $edit, 'user' => $users]);
     }
 
     public function EditarAlunoSalvar(){
         if(Auth::user()->permissao == 3){                
             $aluno = new User();
-            $aluno->name = $request->input('nome');
+            $aluno->name = $request->input('name');
             $aluno->data_nasc = $request->input('data_nasc');
             $aluno->CPF = $request->input('cpf');
             $aluno->logradouro = $request->input('logradouro');
@@ -155,15 +168,16 @@ class portalController extends Controller
             $aluno->bairro = $request->input('bairro');
             $aluno->pais = $request->input('pais');
             $aluno->uf = $request->input('uf');
+            $aluno->uf = $request->input('municipio');
             $aluno->telefone1 = $request->input('telefone1');
             $aluno->telefone2 = $request->input('telefone2');
 
             $aluno->save();
 
             $sucesso = 'O aluno <b> ' . $aluno->name . '</b> foi editado com sucesso!';
-            return redirect()->route('aluno.add')->with(['sucesso' => $sucesso, 'nome' => $aluno->nome]);   
+            return redirect()->route('aluno.lista')->with(['sucesso' => $sucesso, 'nome' => $aluno->nome]);   
 
-            return redirect()->route('aluno.add');
+            return redirect()->route('aluno.lista');
             }  
         else {
             $alerta = '<b>' . Auth::user()->name . '</b> Você não tem permissão para editar um aluno!';

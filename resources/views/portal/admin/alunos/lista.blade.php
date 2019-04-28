@@ -53,7 +53,7 @@
                                 </li>
                             </td>
                             <td>
-                                <a class="icon" href="javascript:void(0)"> <i class="fe fe-edit"></i> </a>
+                                <a class="icon" href="{{Route('aluno.edit',$user->id)}}"> <i class="fe fe-edit"></i> </a>
                             </td>
                                 
                             </tr>

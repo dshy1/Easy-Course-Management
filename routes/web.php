@@ -21,8 +21,8 @@ Route::get('/portal/alunos', ['as' => 'aluno.lista', 'uses' => 'portalController
 Route::get('/portal/alunos/adicionar', ['as' => 'aluno.add', 'uses' => 'portalController@CadastrarAlunoForm'])->middleware('auth');
 Route::post('/portal/alunos/adicionar/salvar', ['as' => 'aluno.salvar', 'uses' => 'portalController@CadastrarAlunoSalvar'])->middleware('auth');
 Route::get('/portal/alunos/pesquisar', ['as' => 'aluno.buscar', 'uses' => 'portalController@PesquisarAluno'])->middleware('auth');
-Route::get('/portal/alunos/editar', ['as' => 'aluno.edit', 'uses' => 'portalController@EditarAlunoForm'])->middleware('auth');
-Route::post('/portal/alunos/editar/salvar', ['as' => 'aluno.edit', 'uses' => 'portalController@EditarAlunoSalvar'])->middleware('auth');
+Route::get('/portal/alunos/{id}/editar', ['as' => 'aluno.edit', 'uses' => 'portalController@EditarAlunoForm'])->middleware('auth');
+Route::post('/portal/alunos/editar/salvar', ['as' => 'aluno.edit.save', 'uses' => 'portalController@EditarAlunoSalvar'])->middleware('auth');
 
 Route::get('/portal/logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 
