@@ -3,7 +3,9 @@ Objetivo: Criar um sistema para alunos e professores, onde haverá os alunos ter
 
 Motivo do projeto: Estou estudando Laravel e para desenvolver projetos mais complexos no futuro, estou fazendo esse projeto em Licença **MIT**
 
-.
+Veja alguns prints do sistema [Clique Aqui](https://github.com/dshy1/Easy-Course-Management/blob/master/Prints.md).
+
+
 Permissões e Funcionalidades
 **Admin**
 - Cadastrar o nome e duração do Curso.
