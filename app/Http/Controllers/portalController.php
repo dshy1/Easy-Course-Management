@@ -178,7 +178,7 @@ class portalController extends Controller
      else {
         $alerta = '<b>' . Auth::user()->name . '</b> Você não tem acesso a essa área!';
         return redirect()->route('portal.dashboard')->with('alerta', $alerta);   
-    }  
+        }  
     }
 
 

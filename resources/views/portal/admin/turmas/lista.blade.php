@@ -1,15 +1,15 @@
 @extends('base.header')
 
-@section('title', 'Lista de alunos')
+@section('title', 'Turmas')
 
 @section('content')
 
 <div class="container">
     <div class="col-12">
-    <div class="ard-header d-flex">
+        <div class="ard-header d-flex">
             <div class="d-flex align-middle mr-0 ml-auto mt-auto pb-auto mb-auto pt-auto" style="margin-bottom: 10px!important">
                 <div class="align-middle mr-0 ml-auto mt-auto pb-auto mb-auto pt-auto">
-                    <a href= "{{Route('aluno.add')}}" class="btn btn-success"><i class="fe fe-plus mr-2"></i>Cadastrar</a>
+                    <a href= "{{Route('turma.add')}}" class="btn btn-success"><i class="fe fe-plus mr-2"></i>Cadastrar</a>
                 </div>
             </div>
         </div>
@@ -17,7 +17,7 @@
             <div class="card-header d-flex">
                 <h3 class="card-title"> Alunos </h3>
                 <div class="align-middle mr-0 ml-auto mt-auto pb-auto mb-auto pt-auto">
-                <form method="get" action="{{Route('aluno.buscar')}}">
+                <form method="get" action="{{Route('turma.buscar')}}">
                     <div class="input-icon">
                         <input name="q" type="search" class="form-control" placeholder="Procurar por...">
                         <a class="input-icon-addon"> <i class="fe fe-search"></i> </a>
@@ -30,37 +30,32 @@
                 <table class="table card-table table-vcenter text-nowrap">
                     <thead>
                         <tr>
-                            <th>Aluno</th>
-                            <th>Data Nascimento</th>
-                            <th>Email</th>
-                            <th>Cursos inscritos</th>
-                            <th>Status</th>
-                            <th>Média</th>
+                            <th>Curso</th>
+                            <th>Duração</th>
+                            <th>Quantidade de turmas</th>
+                            <th>Total de alunos</th>
+                            <th>Avaliação do curso</th>
+                            <th>Nota média</th>
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($dados as $dado)
                             <tr>
-                            <td><a href="#" class="text-inherit">{{$user->name}}</a></td>
-                            <td><?php $datanasc = date("d-m-Y", strtotime($user->data_nasc)); echo $datanasc; ?></td>
-                            <td>{{$user->email}}</td>
+                            <td><a href="#" class="text-inherit">{{$dado->id}}</a></td>
+                            <td>{{$dado->duracao}}</td>
+                            <td></td>
                             <td>5 Cursos</td>
                             <td><span class="status-icon bg-warning"></span>Esperando turma</td>
                             <td>8.75</td>
                             <td class="text-right">
-                                <li class="nav-item dropdown">
-                                    <a href="javascript:void(0)" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fe fe-settings"> </i> Opções</a>
-                                    <div class="dropdown-menu dropdown-menu-arrow">
-                                        <a href="#" class="dropdown-item"><i class="fe fe-book"> </i> Registar em um curso</a>
-                                        <a href="#" class="dropdown-item"><i class="fe fe-unlock"> </i> Trocar senha</a>
-                                        <a href="{{Route('aluno.delete',$user->id)}}" class="dropdown-item"><i class="fe fe-trash-2"> </i> Deletar usuário</a>
-                                    </div>
-                                </li>
+                            
+                            <a href="{{Route('turma.edit', $dado->id)}}" class="btn btn-icon btn-sm"> <i class="fe fe-edit"></i> </a>
                             </td>
                             <td>
-                                <a class="icon" href="{{Route('aluno.edit',$user->id)}}"> <i class="fe fe-edit"></i> </a>
+                            <a href="{{Route('turma.delete',$dado->id)}}" class="btn btn-icon btn-sm"><i class="fe fe-trash"></i> </a> 
+
                             </td>
                                 
                             </tr>

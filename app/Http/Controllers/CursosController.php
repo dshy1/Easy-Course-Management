@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 
 use App\Curso;
+use App\Turma;
 
 
 class CursosController extends Controller
@@ -106,5 +107,92 @@ class CursosController extends Controller
         }
     }
 
+
+    /* TURMAS */
+
+    public function TurmaLista(){
+        if(Auth::user()->permissao == 3){
+            $dados = Turma::all();
+            return view('portal.admin.turmas.lista')->with(['dados' => $dados]);
+        }
+        else {
+            $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins!';
+            return redirect()->route('portal.dashboard')->with('alerta', $alerta);
+        }
+    }
+
+    public function CadastrarTurmaForm(){
+        if(Auth::user()->permissao == 3){
+            return view('portal.admin.turmas.add');
+        }
+        else{
+            $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins!';
+            return redirect()->route('portal.dashboard')->with('alerta', $alerta);
+        }
+    }
+
+    public function SalvarCadastrarTurma(request $request){
+        if(Auth::user()->permissao == 3){
+            $dados = $request->all();
+            Turma::create($dados);
+            $sucesso = 'A turma de <b> ' . $request->nome . '</b> foi criada com sucesso!';
+            return view('portal.admin.turmas.add')->with(['sucesso' => $sucesso]);
+        }
+        else {
+            $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins!';
+            return redirect()->route('portal.dashboard')->with('alerta', $alerta);
+        }
+    }
+
+    public function EditarTurma($id){
+        if(Auth::user()->permissao == 3){
+            $dados = Turma::find($id);
+            return view('portal.admin.turmas.edit')->with(['dados' => $dados]);
+        }
+        else{
+            $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins!';
+            return redirect()->route('portal.dashboard')->with('alerta', $alerta);
+        }
+    }
+
+    public function SalvarEditarTurma(request $request, $id){
+        if(Auth::user()->permissao == 3){
+            $dados = $request->all();
+            Turma::find($id)->update($dados);
+            $sucesso = 'A turma de <b> ' . $request->nome . '</b> foi editada com sucesso!';
+            return redirect()->route('turma.lista')->with(['sucesso' => $sucesso]);
+        }
+        else{
+            $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins!';
+            return redirect()->route('portal.dashboard')->with('alerta', $alerta);
+        }
+    }
+
+    public function DeletarTruma($id){
+        if(Auth::user()->permissao == 3){
+            $dados = Turma::find($id);
+            Turma::find($id)->delete();
+            $sucesso = 'A turma de <b> ' . $dados->nome . '</b> foi deletada com sucesso!';
+            return redirect()->route('turma.lista')->with(['sucesso' => $sucesso]);
+        }
+        else{
+            $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins!';
+            return redirect()->route('portal.dashboard')->with('alerta', $alerta);
+        }
+    }
+
+    public function PesquisarTurma(request $request){
+        $pesquisa = $request->get('q');
+        if(Auth::user()->permissao == 3){
+            $result = Turma::where('id', 'LIKE', '%'.$pesquisa.'%')->orWhere('status', 'LIKE', '%'.$pesquisa.'%')->get();
+            return view('portal.admin.turmas.lista')->with(['dados' => $result]);
+        }
+        else{
+            $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins!';
+            return redirect()->route('portal.dashboard')->with('alerta', $alerta);
+        }
+    }
+
+    
     
 }
