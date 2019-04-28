@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('bairro', 100)->nullable();
             $table->string('pais', 100)->nullable();
             $table->string('uf', 3)->nullable();
+            $table->string('municipio', 150)->nullable();
             $table->decimal('telefone1', 15, 0)->nullable();
             $table->decimal('telefone2', 15, 0)->nullable();
             

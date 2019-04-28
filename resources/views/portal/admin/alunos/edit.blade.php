@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="container">
-<form class="card" action="{{Route('aluno.edit.save')}}" method="POST">
+<form class="card" action="{{Route('aluno.edit.save',$user->id)}}" method="POST">
         @csrf
         <div class="card-body">
             <h3 class="card-title">Cadastrar novo aluno</h3>
