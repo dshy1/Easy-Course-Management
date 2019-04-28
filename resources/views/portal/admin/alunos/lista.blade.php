@@ -7,8 +7,12 @@
 <div class="container">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex">
                 <h3 class="card-title"> Alunos </h3>
+                <div class="input-icon align-middle mr-0 ml-auto mt-auto pb-auto mb-auto pt-auto">
+                    <input type="text" class="form-control" placeholder="Procurar por...">
+                    <span class="input-icon-addon"> <i class="fe fe-search"></i> </span>
+                </div>
             </div>
             <div class="table-responsive">
                 <table class="table card-table table-vcenter text-nowrap">

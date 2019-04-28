@@ -34,7 +34,7 @@ class portalController extends Controller
            // $users = User::all()->except(Auth::user()->id);
 
            $users = User::where('permissao',1)->get();          
-           return view('portal.admin.admin-dashboard')->with(array('users'=>$users));
+           return view('portal.admin.admin-dashboard')->with(['users'=>$users]);
         }
 
         else {
@@ -73,7 +73,7 @@ class portalController extends Controller
     public function ListaAlunos(){
         if(Auth::user()->permissao == 3){
             $users = User::where('permissao',1)->get();          
-            return view('portal.admin.alunos.lista')->with(array('users'=>$users));
+            return view('portal.admin.alunos.lista')->with(['users'=>$users]);
          }
     }
 
@@ -107,6 +107,15 @@ class portalController extends Controller
             $aluno->name = $request->input('nome');
             $aluno->email = $request->input('email');
             $aluno->data_nasc = $request->input('data_nasc');
+            $aluno->CPF = $request->input('cpf');
+            $aluno->logradouro = $request->input('logradouro');
+            $aluno->numero = $request->input('numero');
+            $aluno->bairro = $request->input('bairro');
+            $aluno->pais = $request->input('pais');
+            $aluno->uf = $request->input('uf');
+            $aluno->telefone1 = $request->input('telefone1');
+            $aluno->telefone2 = $request->input('telefone2');
+
             $pass = $request->input('senha');
             $crypt_pass = Hash::make($pass);
             $aluno->password = $crypt_pass;
