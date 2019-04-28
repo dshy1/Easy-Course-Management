@@ -24,6 +24,14 @@ class CreateUsersTable extends Migration
             $table->date('data_nasc')->nullable();;
             $table->string('CPF', 20)->nullable();;
             $table->integer('permissao')->default(1);
+            $table->string('logradouro', 100)->nullable();
+            $table->string('numero', 10)->nullable();
+            $table->string('bairro', 100)->nullable();
+            $table->string('pais', 100)->nullable();
+            $table->string('uf', 3)->nullable();
+            $table->decimal('telefone1', 15, 0)->nullable();
+            $table->decimal('telefone2', 15, 0)->nullable();
+            
 
             $table->timestamps();
         });
