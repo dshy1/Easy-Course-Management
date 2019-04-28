@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Collection;
 
+
 use App\Curso;
 use App\User;
 
@@ -131,6 +132,7 @@ class portalController extends Controller
             $aluno->bairro = $request->input('bairro');
             $aluno->pais = $request->input('pais');
             $aluno->uf = $request->input('uf');
+            $aluno->municipio = $request->input('municipio');
             $aluno->telefone1 = $request->input('telefone1');
             $aluno->telefone2 = $request->input('telefone2');
 
@@ -157,22 +159,13 @@ class portalController extends Controller
         return view('portal.admin.alunos.edit')->with(['edit' => $edit, 'user' => $users]);
     }
 
-    public function EditarAlunoSalvar(){
-        if(Auth::user()->permissao == 3){                
-            $aluno = new User();
-            $aluno->name = $request->input('name');
-            $aluno->data_nasc = $request->input('data_nasc');
-            $aluno->CPF = $request->input('cpf');
-            $aluno->logradouro = $request->input('logradouro');
-            $aluno->numero = $request->input('numero');
-            $aluno->bairro = $request->input('bairro');
-            $aluno->pais = $request->input('pais');
-            $aluno->uf = $request->input('uf');
-            $aluno->uf = $request->input('municipio');
-            $aluno->telefone1 = $request->input('telefone1');
-            $aluno->telefone2 = $request->input('telefone2');
+    public function EditarAlunoSalvar(request $request, $id){
+        if(Auth::user()->permissao == 3){    
+            $aluno = User::find($id);
+            $dados = $request->all();
 
-            $aluno->save();
+            User::find($id)->update($dados);
+            
 
             $sucesso = 'O aluno <b> ' . $aluno->name . '</b> foi editado com sucesso!';
             return redirect()->route('aluno.lista')->with(['sucesso' => $sucesso, 'nome' => $aluno->nome]);   
@@ -189,7 +182,6 @@ class portalController extends Controller
         if(Auth::user()->permissao == 3){  
             $user = User::find($id);
             User::find($id)->delete();
-            
             $sucesso = 'O aluno <b> ' . $user->name . '</b> foi deletado com sucesso!';
             return redirect()->route('aluno.lista')->with(['sucesso' => $sucesso, 'nome' => $user->name]);   
         } else{
