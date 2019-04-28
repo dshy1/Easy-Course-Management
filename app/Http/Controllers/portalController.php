@@ -15,6 +15,7 @@ use App\User;
 
 class portalController extends Controller
 {
+    
     public function HomeSite(){
         return view('site_home');
     }
@@ -45,32 +46,7 @@ class portalController extends Controller
 
     }
 
-    public function CadastrarCurso(){
-        if(Auth::user()->permissao == 3){
-            return view('portal.admin.cursos.add');
-        }
-        else {
-            $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins.';
-            return redirect()->route('portal.dashboard')->with('alerta', $alerta);   
-        }
-        
-    }
 
-    public function SalvarCadastrarCurso(Request $request){
-        if(Auth::user()->permissao == 3){
-
-            $curso = new Curso();
-            $curso->nome = $request->input('nome');
-            $curso->duracao = $request->input('duracao');
-            $curso->save();
-
-            return redirect()->route('curso.add');
-        }
-        else {
-            $alerta = '<b>' . Auth::user()->name . '</b> Você não tem permissão para adicionar um curso.';
-            return redirect()->route('portal.dashboard')->with('alerta', $alerta);   
-        }           
-    }
 
 
     /* START FUNÇÕES ADMIN > ALUNOS */

@@ -1,6 +1,6 @@
 @extends('base.header')
 
-@section('title', 'Lista de alunos')
+@section('title', 'Lista de cursos')
 
 @section('content')
 
@@ -23,22 +23,22 @@
                 <table class="table card-table table-vcenter text-nowrap">
                     <thead>
                         <tr>
-                            <th>Aluno</th>
-                            <th>Data Nascimento</th>
-                            <th>Email</th>
-                            <th>Cursos inscritos</th>
-                            <th>Status</th>
-                            <th>Média</th>
+                            <th>Curso</th>
+                            <th>Duração</th>
+                            <th>Quantidade de turmas</th>
+                            <th>Total de alunos</th>
+                            <th>Avaliação do curso</th>
+                            <th>Nota média</th>
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($cursos as $curso)
                             <tr>
-                            <td><a href="#" class="text-inherit">{{$user->name}}</a></td>
-                            <td><?php $datanasc = date("d-m-Y", strtotime($user->data_nasc)); echo $datanasc; ?></td>
-                            <td>{{$user->email}}</td>
+                            <td><a href="#" class="text-inherit">{{$curso->nome}}</a></td>
+                            <td>{{$curso->duracao}}</td>
+                            <td></td>
                             <td>5 Cursos</td>
                             <td><span class="status-icon bg-warning"></span>Esperando turma</td>
                             <td>8.75</td>
@@ -48,12 +48,12 @@
                                     <div class="dropdown-menu dropdown-menu-arrow">
                                         <a href="#" class="dropdown-item"><i class="fe fe-book"> </i> Registar em um curso</a>
                                         <a href="#" class="dropdown-item"><i class="fe fe-unlock"> </i> Trocar senha</a>
-                                        <a href="{{Route('aluno.delete',$user->id)}}" class="dropdown-item"><i class="fe fe-trash-2"> </i> Deletar usuário</a>
+                                        <a href="{{Route('aluno.delete',$curso->id)}}" class="dropdown-item"><i class="fe fe-trash-2"> </i> Deletar usuário</a>
                                     </div>
                                 </li>
                             </td>
                             <td>
-                                <a class="icon" href="{{Route('aluno.edit',$user->id)}}"> <i class="fe fe-edit"></i> </a>
+                                <a class="icon" href="{{Route('aluno.edit',$curso->id)}}"> <i class="fe fe-edit"></i> </a>
                             </td>
                                 
                             </tr>
