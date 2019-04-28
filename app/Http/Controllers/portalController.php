@@ -35,7 +35,7 @@ class portalController extends Controller
            // $users = User::all()->except(Auth::user()->id);
 
            $users = User::where('permissao',1)->get();          
-           return view('portal.admin.admin-dashboard')->with(['users'=>$users]);
+           return view('portal.admin.admin-dashboard')->with(['users' => $users]);
         }
 
         else {
@@ -185,7 +185,19 @@ class portalController extends Controller
         }  
     }
     
+    public function DeletarAluno($id){
+        if(Auth::user()->permissao == 3){  
+            $user = User::find($id);
+            User::find($id)->delete();
+            
+            $sucesso = 'O aluno <b> ' . $user->name . '</b> foi deletado com sucesso!';
+            return redirect()->route('aluno.lista')->with(['sucesso' => $sucesso, 'nome' => $user->name]);   
+        } else{
+            $alerta = '<b>' . Auth::user()->name . '</b> Você não tem acesso permissão para deletar um usuário!';
+            return redirect()->route('portal.dashboard')->with('alerta', $alerta);   
+        }
 
+    }
 
     public function PesquisarAluno(Request $request){
     $pesquisa = $request->get('q');
