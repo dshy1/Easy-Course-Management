@@ -20,6 +20,7 @@ Route::post('/portal/cursos/salvar', ['as' => 'curso.salvar', 'uses' => 'portalC
 Route::get('/portal/alunos', ['as' => 'aluno.lista', 'uses' => 'portalController@ListaAlunos'])->middleware('auth');
 Route::get('/portal/alunos/adicionar', ['as' => 'aluno.add', 'uses' => 'portalController@CadastrarAluno'])->middleware('auth');
 Route::post('/portal/alunos/salvar', ['as' => 'aluno.salvar', 'uses' => 'portalController@SalvarCadastrarAluno'])->middleware('auth');
+Route::get('/portal/alunos/pesquisar', ['as' => 'aluno.buscar', 'uses' => 'portalController@PesquisarAluno'])->middleware('auth');
 
 Route::get('/portal/logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 

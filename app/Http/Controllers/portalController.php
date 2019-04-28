@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -70,6 +71,10 @@ class portalController extends Controller
         }           
     }
 
+
+    /* START FUNÇÕES ADMIN > ALUNOS */
+
+
     public function ListaAlunos(){
         if(Auth::user()->permissao == 3){
             $users = User::where('permissao',1)->get();          
@@ -129,8 +134,26 @@ class portalController extends Controller
         }
 
         else {
-            $alerta = '<b>' . Auth::user()->name . '</b> Você não tem permissão para adicionar um curso.';
+            $alerta = '<b>' . Auth::user()->name . '</b> Você não tem permissão para cadastrar um aluno!';
             return redirect()->route('portal.dashboard')->with('alerta', $alerta);   
         }  
     }
+
+    public function PesquisarAluno(Request $request){
+    $pesquisa = $request->get('q');
+
+    if(Auth::user()->permissao == 3){  
+        $users = User::where('name', 'LIKE', '%'.$pesquisa.'%')->orWhere('email', 'LIKE', '%'.$pesquisa.'%')->get();
+
+        return view('portal.admin.alunos.lista')->with(['users'=>$users]);
+     }
+     else {
+        $alerta = '<b>' . Auth::user()->name . '</b> Você não tem acesso a essa área!';
+        return redirect()->route('portal.dashboard')->with('alerta', $alerta);   
+    }  
+
+    
+    }
+
+
 }

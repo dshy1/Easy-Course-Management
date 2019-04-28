@@ -9,9 +9,14 @@
         <div class="card">
             <div class="card-header d-flex">
                 <h3 class="card-title"> Alunos </h3>
-                <div class="input-icon align-middle mr-0 ml-auto mt-auto pb-auto mb-auto pt-auto">
-                    <input type="text" class="form-control" placeholder="Procurar por...">
-                    <span class="input-icon-addon"> <i class="fe fe-search"></i> </span>
+                <div class="align-middle mr-0 ml-auto mt-auto pb-auto mb-auto pt-auto">
+                <form method="get" action="{{Route('aluno.buscar')}}">
+                    <div class="input-icon">
+                        <input name="q" type="search" class="form-control" placeholder="Procurar por...">
+                        <a class="input-icon-addon"> <i class="fe fe-search"></i> </a>
+                    </div>
+                    
+                    </form>
                 </div>
             </div>
             <div class="table-responsive">
@@ -29,10 +34,8 @@
                         </tr>
                     </thead>
                     <tbody>
-
                         @foreach($users as $user)
                             <tr>
-                                
                             <td><a href="#" class="text-inherit">{{$user->name}}</a></td>
                             <td><?php $datanasc = date("d-m-Y", strtotime($user->data_nasc)); echo $datanasc; ?></td>
                             <td>{{$user->email}}</td>

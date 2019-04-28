@@ -71,7 +71,6 @@
 
                             @foreach($users as $user)
                                 <tr>
-                                    
                                 <td><a href="#" class="text-inherit">{{$user->name}}</a></td>
                                 <td><?php $datanasc = date("d-m-Y", strtotime($user->data_nasc)); echo $datanasc; ?></td>
                                 <td>{{$user->email}}</td>
