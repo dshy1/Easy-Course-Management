@@ -27,6 +27,10 @@ class CreateTurmasTable extends Migration
             $table->integer('curso_id')->unsigned()->nullable();
             $table->foreign('curso_id')->references('id')->on('cursos');
 
+            $table->integer('professor_id')->unsigned()->nullable();
+            $table->foreign('professor_id')->references('id')->on('users');
+
+
             $table->timestamps();
         });
     }

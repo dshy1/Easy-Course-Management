@@ -55,6 +55,5 @@ Route::get('/portal/logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@
 Route::get('/portal/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/portal/login', 'Auth\LoginController@login');
 
-/*
+
 Auth::routes();
-*/

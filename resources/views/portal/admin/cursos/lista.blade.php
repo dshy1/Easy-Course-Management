@@ -15,7 +15,7 @@
         </div>
         <div class="card">
             <div class="card-header d-flex">
-                <h3 class="card-title"> Alunos </h3>
+                <h3 class="card-title"> Cursos </h3>
                 <div class="align-middle mr-0 ml-auto mt-auto pb-auto mb-auto pt-auto">
                 <form method="get" action="{{Route('curso.buscar')}}">
                     <div class="input-icon">

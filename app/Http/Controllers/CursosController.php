@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
 
-
+use App\User;
 use App\Curso;
 use App\Turma;
 
@@ -123,7 +123,10 @@ class CursosController extends Controller
 
     public function CadastrarTurmaForm(){
         if(Auth::user()->permissao == 3){
-            return view('portal.admin.turmas.add');
+            $professores = User::where('permissao', 2)->get();
+            $cursos = Cursos::all();
+
+            return view('portal.admin.turmas.add')->with(['professores' => $professores, 'cursos' => $cursos]);
         }
         else{
             $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins!';

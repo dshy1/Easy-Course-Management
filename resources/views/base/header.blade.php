@@ -198,7 +198,7 @@
                                         <a href="{{Route('aluno.lista')}}" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i>Cursos</a>
                                         <div class="dropdown-menu dropdown-menu-arrow">
                                             <a href="{{Route('curso.lista')}}" class="dropdown-item">Cursos</a>
-                                            <a href="#" class="dropdown-item">Turmas</a>
+                                            <a href="{{Route('turma.lista')}}" class="dropdown-item">Turmas</a>
                                             <a href="#" class="dropdown-item">Professores</a>
                                         </div>                                        
                                     </li>
