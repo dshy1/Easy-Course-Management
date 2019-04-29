@@ -30,7 +30,7 @@ Route::get('/portal/cursos/pesquisa', ['as' => 'curso.buscar', 'uses' => 'Cursos
 /* ROTA DO CRIAR TURMA (ONLY ADMIN) */
 Route::get('/portal/turmas', ['as' => 'turma.lista', 'uses' => 'CursosController@TurmaLista'])->middleware('auth');
 Route::get('/portal/turmas/adicionar', ['as' => 'turma.add', 'uses' => 'CursosController@CadastrarTurmaForm'])->middleware('auth');
-Route::post('/portal/turmas/adicionar/salvar', ['as' => 'turma.add.save', 'uses' => 'CursosController@SalvarCadastrarTurma'])->middleware('auth');
+Route::post('/portal/turmas/adicionar/salvar', ['as' => 'turma.save', 'uses' => 'CursosController@SalvarCadastrarTurma'])->middleware('auth');
 Route::get('/portal/turmas/{id}/editar', ['as' => 'turma.edit', 'uses' => 'CursosController@EditarTurma'])->middleware('auth');
 Route::post('/portal/turmas/{id}/editar/salvar', ['as' => 'turma.edit.save', 'uses' => 'CursosController@SalvarEditarTurma'])->middleware('auth');
 Route::get('/portal/turmas/{id}/deletar', ['as' => 'turma.delete', 'uses' => 'CursosController@DeletarTruma'])->middleware('auth');

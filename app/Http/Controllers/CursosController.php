@@ -124,7 +124,7 @@ class CursosController extends Controller
     public function CadastrarTurmaForm(){
         if(Auth::user()->permissao == 3){
             $professores = User::where('permissao', 2)->get();
-            $cursos = Cursos::all();
+            $cursos = Curso::all();
 
             return view('portal.admin.turmas.add')->with(['professores' => $professores, 'cursos' => $cursos]);
         }
@@ -139,7 +139,7 @@ class CursosController extends Controller
             $dados = $request->all();
             Turma::create($dados);
             $sucesso = 'A turma de <b> ' . $request->nome . '</b> foi criada com sucesso!';
-            return view('portal.admin.turmas.add')->with(['sucesso' => $sucesso]);
+            return redirect()->route('turma.lista')->with(['sucesso' => $sucesso]);
         }
         else {
             $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins!';
@@ -149,8 +149,14 @@ class CursosController extends Controller
 
     public function EditarTurma($id){
         if(Auth::user()->permissao == 3){
+            $professores = User::where('permissao', 2)->get();
+            $cursos = Curso::all();
             $dados = Turma::find($id);
-            return view('portal.admin.turmas.edit')->with(['dados' => $dados]);
+            $professor_nome = User::find($dados->professor_id);
+            $curso_nome = Curso::find($dados->curso_id);
+
+            return view('portal.admin.turmas.edit')->with(['dados' => $dados, 'cursos' => $cursos, 
+                        'professores' => $professores, 'curso_nome' => $curso_nome, 'professor_nome' => $professor_nome]);
         }
         else{
             $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins!';
@@ -160,10 +166,12 @@ class CursosController extends Controller
 
     public function SalvarEditarTurma(request $request, $id){
         if(Auth::user()->permissao == 3){
-            $dados = $request->all();
+            $dados = $request->get();
+            dd($dados);
+            /*
             Turma::find($id)->update($dados);
             $sucesso = 'A turma de <b> ' . $request->nome . '</b> foi editada com sucesso!';
-            return redirect()->route('turma.lista')->with(['sucesso' => $sucesso]);
+            return redirect()->route('turma.lista')->with(['sucesso' => $sucesso]);*/
         }
         else{
             $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins!';
