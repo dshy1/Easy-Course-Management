@@ -167,11 +167,9 @@ class CursosController extends Controller
     public function SalvarEditarTurma(request $request, $id){
         if(Auth::user()->permissao == 3){
             $dados = $request->get();
-            dd($dados);
-            /*
             Turma::find($id)->update($dados);
-            $sucesso = 'A turma de <b> ' . $request->nome . '</b> foi editada com sucesso!';
-            return redirect()->route('turma.lista')->with(['sucesso' => $sucesso]);*/
+            $sucesso = 'Editado com sucesso!';
+            return redirect()->route('turma.lista')->with(['sucesso' => $sucesso]);
         }
         else{
             $alerta = '<b>' . Auth::user()->name . '</b> Essa área é apenas para admins!';
